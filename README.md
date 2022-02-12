@@ -17,3 +17,6 @@ CSS - Cascading Style Sheet - This was used to style the website
 7. As a writer, I would also like to create a blog from the application.
 8. As a writer, I would like to delete comments that I find insulting or degrading.
 9. As a writer, I would like to update or delete blogs I have created.
+
+### APP SCREENSHORT
+![](all.png)
