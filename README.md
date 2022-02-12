@@ -5,3 +5,5 @@ This is a flask  blog app that allows user to post blogs, its writen in flask py
 
 ### TECHNOLOGY USED
 Python-Flask - This a python frame work that allows us to write web application using python
+HTML - HYPER TEXT MAKE UP LANGUAGE - This provide a way to display web contents
+CSS - Cascading Style Sheet - This was used to style the website
