@@ -5,7 +5,7 @@ from app.models import registration, blogs,coments, contacts, newslater
 from flask_migrate import Migrate, MigrateCommand
 
 
-app = create_app('development')
+app = create_app('production')
 
 
 manager = Manager(app)
