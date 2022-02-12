@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block title %}
+   <title>{{ title }}</title>
+
+{% endblock%}
+<!--  -->
+{% block navbar %}
+<div class="flexnavbar">
+    <div class="topnav">
+            <ul>
+                <li><span>Tell:</span> +25498434554</li>
+                <li><span>Email:</span> techrollblogs@gmail.com</li>
+            </ul>
+    </div>
+      <div class="navbar">
+          <ul>
+             <li><a href="/">Home</a></li>
+             <li><a href="/contact">Contact</a></li>
+             <li><a href="/about">About</a></li>
+             <li id="loginbtn"><a href="/login">Login</a></li>
+          </ul>
+      </div>
+</div>
+{% endblock%}
+
+
+{% block body %}
+<div class="containorblogs" id="addblogs">
+    <div class="addblogs">
+        <div class="close" onclick="closewindow()">&times;</div>
+        <div class="errors" style="color: red;">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% endwith %}
+        </div>
+        <form action="/" method="post" enctype="multipart/form-data">
+          <label for="Blogtitle">Blog Title</label>
+          <input type="text" name="Blogtitle" autocomplete="off" id="Blogtitle" placeholder="Enter Blog Title" required>
+          <label for="blogpitch">Blog Pitch</label>
+          <textarea name="blogpitch" id="blogpitch" autocomplete="off" cols="30" rows="10" placeholder="Enter a pitch to describle the blog" required></textarea>
+          <label for="blogimage">Blog Image</label>
+          <input type="file" name="file" autocomplete="off" id="blogimage" required>
+          <label for="Blogbody">Blog Body</label>
+          <textarea name="Blogbody" id="Blogbody" autocomplete="off" cols="30" rows="10" placeholder="Enter blog content(your blog content goes here)" required></textarea>
+          <input type="submit" value="Post Blog" id="submits">
+        </form>
+        </div>
+
+</div>
+<div class="blog_content">
+            {% if names.is_authenticated%}
+            <div class="displayadd"><button onclick="openwindow()">Add Blog</button></div>
+            {% else %}
+            <div class="text">Not loged in</div>
+            {% endif %}
+        </div>
+        <div class="flex_blogs">
+            <div class="all">
+                {% for getblogs in getblogs %}
+                   <div class="allblogs">
+                    <div class="postby">Posted By: {{getblogs.postby}}</div>
+                    <div class="blogstitle">{{getblogs.blog_title}}</div>
+                    <div class="blogimages" style="background-image: url(../static/uploads/{{getblogs.blog_image}});">
+                     <div class="blogpitch">
+                        {{getblogs.blog_pitch }}
+                     </div>
+                    </div>
+                    <div class="contents">
+                        {{getblogs.post}}
+                    </div>
+                    <form action="/postcomments" method="post">
+                       <textarea name="postcomm" id="postcomm" cols="30" rows="10" placeholder="Type your comment here" required></textarea>
+                       <input type="submit" value="Send">
+                    </form>
+                    <div class="readcomments">
+                        <a href="/seecoments/{{getblogs.id}}">See Comments</a>
+                    </div>
+                   </div>
+                {% endfor %}
+            </div>
+            <div class="api_data">
+                <h2>Random Quotes</h2>
+                <div class="quotes">
+                    <div class="mainquote">
+                        {{data.quote}}
+                    </div>
+                    <div class="author" style="text-align: center;">
+                        --------{{data.author}}--------
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock%}
+{% block footer %}
+<div class="footer">
+    <form action="/signupnewslater" method="post">
+        <div>Sign-Up to our newslater to receive post update</div>
+       <div class="flex_form">
+        <input type="email" name="signupemail" autocomplete="off" id="signupemail" placeholder="Enter Email to sign-up" required>
+        <input type="submit" value="Sign-Up">
+       </div>
+    </form>
+    <p style="text-align: center;">&copy;2022 | terms and conditions apply</p>
+</div>
+{% endblock%}

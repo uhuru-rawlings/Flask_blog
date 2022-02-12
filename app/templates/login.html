@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../static/techroll.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <script src="{{ url_for('static', filename='login.js') }}"></script>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <div class="contentform">
+        <div class="logos">
+        <img src="../static/techroll.png" height="100px" width="100px" alt="">
+        <p>Welcome back!, to proceed login, this will give you access to different app fetures</p>
+        </div>
+        <form action="/login" method="post">
+            <div class="errors" style="color: red;">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class=flashes>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                {% endwith %}
+            </div>
+          <input type="email" name="useremail" onclick="removeerror(this.id)" autocomplete="off" id="useremail" placeholder="Enter useremail">
+          <input type="password" name="upassword" onclick="removeerror(this.id)" autocomplete="off" id="password" placeholder="Enter password">
+          <a href="/signup">Dont have account?</a>
+          <input type="submit" value="Sign-In" onclick="return validatelogin()">
+        </form>
+    </div>
+</body>
+</html>

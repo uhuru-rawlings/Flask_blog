@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}
+   <title>{{ title }}</title>
+
+{% endblock%}
+<!--  -->
+{% block navbar %}
+<div class="flexnavbar">
+    <div class="topnav">
+            <ul>
+                <li><span>Tell:</span> +25498434554</li>
+                <li><span>Email:</span> techrollblogs@gmail.com</li>
+            </ul>
+    </div>
+      <div class="navbar">
+          <ul>
+             <li><a href="/">Home</a></li>
+             <li><a href="/contact">Contact</a></li>
+             <li><a href="/about">About</a></li>
+             <li id="loginbtn"><a href="/login">Login</a></li>
+          </ul>
+      </div>
+</div>
+{% endblock%}
+
+
+{% block body %}
+        <div class="all">
+            {% for getoneblogs in getoneblogs %}
+               <div class="allblogs" id="allblogscom">
+                <div class="postby">Posted By: {{getoneblogs.postby}}</div>
+                <div class="blogstitle">{{getoneblogs.blog_title}}</div>
+                <div class="blogimages" style="background-image: url(../static/uploads/{{getoneblogs.blog_image}});">
+                 <div class="blogpitch">
+                    {{getoneblogs.blog_pitch }}
+                 </div>
+                </div>
+                <div class="contents">
+                    {{getoneblogs.post}}
+                </div>
+                <form action="/postcomments" method="post">
+                   <textarea name="postcomm" id="postcomm" cols="30" rows="10" placeholder="Type your comment here" required></textarea>
+                   <input type="submit" value="Send">
+                </form>
+                <div class="readcomments">
+                    <h3>Comments</h3>
+                    {% if getcomment%}
+                        {% for getcomment in getcomment%}
+                        <div class="signles">{{ getcomment.comment }}</div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="signles">There are no comments for this post</div>
+                    {% endif %}
+                </div>
+               </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock%}
+{% block footer %}
+<div class="footer">
+    <form action="/signupnewslater" method="post">
+        <div>Sign-Up to our newslater to receive post update</div>
+       <div class="flex_form">
+        <input type="email" name="signupemail" autocomplete="off" id="signupemail" placeholder="Enter Email to sign-up" required>
+        <input type="submit" value="Sign-Up">
+       </div>
+    </form>
+    <p style="text-align: center;">&copy;2022 | terms and conditions apply</p>
+</div>
+{% endblock%}

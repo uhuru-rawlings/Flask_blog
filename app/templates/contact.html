@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+   <title>{{ title }}</title>
+
+{% endblock%}
+<!--  -->
+{% block navbar %}
+<div class="flexnavbar">
+    <div class="topnav">
+            <ul>
+                <li><span>Tell:</span> +25498434554</li>
+                <li><span>Email:</span> techrollblogs@gmail.com</li>
+            </ul>
+    </div>
+      <div class="navbar">
+          <ul>
+             <li><a href="/">Home</a></li>
+             <li><a href="/contact">Contact</a></li>
+             <li><a href="/about">About</a></li>
+             <li id="loginbtn"><a href="/login">Login</a></li>
+          </ul>
+      </div>
+</div>
+{% endblock%}
+
+
+{% block body %}
+<div class="contactform">
+    <form action="/contact" method="post">
+        <h3 style="text-align: center;">Contact Us</h3>
+        <div class="errors" style="color: red;">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                <li>{{ message | safe }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% endwith %}
+        </div>
+      <label for="contacts">Phone Number</label>
+      <input type="number" name="contacts" id="contacts" autocomplete="off" placeholder="Enter user contact" required>
+      <label for="useremail">Email Adr.</label>
+      <input type="email" name="useremail" id="useremail" autocomplete="off" placeholder="Enter email adress" required>
+      <label for="messages">Message</label>
+      <textarea name="messages" id="messages" cols="30" autocomplete="off" rows="10" placeholder="Type your message here" required></textarea>
+      <input type="submit" value="Send Message">
+    </form>
+</div>
+{% endblock%}

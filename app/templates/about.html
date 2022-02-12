@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}
+   <title>{{ title }}</title>
+
+{% endblock%}
+<!--  -->
+{% block navbar %}
+<div class="flexnavbar">
+    <div class="topnav">
+            <ul>
+                <li><span>Tell:</span> +25498434554</li>
+                <li><span>Email:</span> techrollblogs@gmail.com</li>
+            </ul>
+    </div>
+      <div class="navbar">
+          <ul>
+             <li><a href="/">Home</a></li>
+             <li><a href="/contact">Contact</a></li>
+             <li><a href="/about">About</a></li>
+             <li id="loginbtn"><a href="/login">Login</a></li>
+          </ul>
+      </div>
+</div>
+{% endblock%}
+
+
+{% block body %}
+<div class="aboutus">
+    <h2 style="text-align: center;">About Us</h2>
+    <div class="texts">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+        Perspiciatis sed provident molestias molestiae enim blanditiis maxime,
+        sit obcaecati voluptate quam nemo eligendi deserunt architecto doloribus in neque et temporibus ipsam!
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+        Perspiciatis sed provident molestias molestiae enim blanditiis maxime,
+        sit obcaecati voluptate quam nemo eligendi deserunt architecto doloribus in neque et temporibus ipsam!
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+        Perspiciatis sed provident molestias molestiae enim blanditiis maxime,
+        sit obcaecati voluptate quam nemo eligendi deserunt architecto doloribus in neque et temporibus ipsam!
+    </div>
+</div>
+<div class="services">
+    <h2 style="text-align: center;">Our Services</h2>
+    <div class="flex-services">
+        <div class="service" id="webhosting">
+            <div class="serv1" id="hosting">
+                <h3>Web Hosting Services</h3>
+                <p>We offer cheap and affordable web hosting services</p>
+            </div>
+        </div>
+        <div class="service" id="webdevelopement">
+            <div class="serv1" id="developement">
+                <h3>Web Developement Services </h3>
+                <p>We offer quality web developement services</p>
+            </div>
+        </div>
+        <div class="service" id="webdesign">
+            <div class="serv1" id="design">
+                <h3>Web Design Services</h3>
+                <p>We offer quality web disig services</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}

@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../static/techroll.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <script src="{{ url_for('static', filename='login.js') }}"></script>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <div class="contentform">
+        <div class="logos">
+        <img src="../static/techroll.png" height="100px" width="100px" alt="">
+        <p>Welcome to techroll!, to proceed create account</p>
+        </div>
+        <form action="/signup" method="post">
+            <div class="errors" style="color: red;">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class=flashes>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                {% endwith %}
+            </div>
+              <legend id="usernamel">Enter useremail</legend>
+              <input type="email" name="useremail" autocomplete="off" oninput="showlegends(this.id)" id="useremail" placeholder="Enter useremail">
+             <legend id="passwordl">Enter password</legend>
+             <input type="password" name="password" autocomplete="off" oninput="showlegends(this.id)" id="password" placeholder="Enter password">
+             <legend id="cpasswordl">Confirm password</legend>
+             <input type="password" name="cpassword" autocomplete="off" oninput="showlegends(this.id)" id="cpassword" placeholder="Confirm password">
+
+          <a href="/login">have account?</a>
+          <input type="submit" value="Sign-In" onclick="return validatesignup()">
+        </form>
+    </div>
+</body>
+</html>
