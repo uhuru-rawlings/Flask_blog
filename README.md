@@ -20,3 +20,4 @@ CSS - Cascading Style Sheet - This was used to style the website
 
 ### APP SCREENSHORT
 ![](all.png)
+### SET UP INSTRUCTION
